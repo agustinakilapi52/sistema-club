@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const actividad_controller_1 = require("../controllers/actividad.controller");
+const enrutadorActividad = (0, express_1.Router)();
+let actividadControllers = new actividad_controller_1.ActividadController();
+enrutadorActividad.route('/actividad').get(actividadControllers.listarActividad);
+enrutadorActividad.route('/actividad').post(actividadControllers.guardarActividad);
+enrutadorActividad.route('/actividad/:id_actividad').delete(actividadControllers.eliminarActividad);
+enrutadorActividad.route('/actividad/:id_actividad').put(actividadControllers.actualizarActividad);
+enrutadorActividad.route('/actividad/:id_actividad').get(actividadControllers.obtenerUnActividad);
+exports.default = enrutadorActividad;
